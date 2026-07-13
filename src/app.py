@@ -6,16 +6,14 @@ app = Flask(__name__)
 app.secret_key = "some_simple_secret_key"
 
 @app.route('/', methods=['GET', 'POST'])
-def index():
-    if request.method == 'POST':
-        nome = request.form['nome']
-        numero = request.form['numero']
+xfrom flask import Flask, request, render_template, redirect, url_for, flash
+import sqlite3
+import os
 
-        # Obter lista de autocarros seleccionados (como strings)
-        autocarros = request.form.getlist('autocarros')
-        autocarros = sorted(set([
-            int(bus) for bus in autocarros if bus.isdigit() and 1 <= int(bus) <= 9
-        ]))  # Distingue e ordena os autocarros
+
+      xfrom flask import Flask, request, render_template, redirect, url_for, flash
+import sqlite3
+import os
 
         if not autocarros:
             flash("⚠️ Please select at least one bus.")
